@@ -571,7 +571,7 @@ html{font-size:14px;}.tab-content > .tab-pane,[class~=custom-radio] li input{dis
   background: #000;
 }
 [class~="site-header"] [class~="site-logo"] img {
-  max-height: 24pt;
+  max-height: 45pt;
 }
 .site-header {
   margin-bottom: 0;
@@ -9675,4 +9675,10 @@ body:not([class~="home"])
 }
 #site-footer ul li a {
   color: #868686;
+}
+.col-auto h4 {
+    padding: 10px;
+    box-shadow: 0px 1px 10px 0px #000;
+    border-radius: 5px;
+    margin: 15px 0px;
 }

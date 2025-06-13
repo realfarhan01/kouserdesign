@@ -427,7 +427,7 @@
     text-align: right;
     display: block;
     padding: 0;
-    background: #cb8161;
+    background: #f55f1e;
     padding: 10px 20px 20px;
     color: #fff;
     text-transform: uppercase;
@@ -549,7 +549,7 @@
   }
   .site-mobile-navigation .mm-menu .mm-navbar a, 
   .site-mobile-vertical .mm-menu .mm-navbar a {
-    color: #cb8161;
+    color: #f55f1e;
     text-transform: uppercase;
     font-weight: 500;
     font-size: 14px;
