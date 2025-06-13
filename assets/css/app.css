@@ -11065,7 +11065,10 @@ body[class~="home"][class~="title-3"]
 [class~="block-product-cats"][class~="layout-2"]
   [class~="item-product-cat-content"]
   [class~="product-cat-content-info"] {
-  bottom: 30pt;
+  bottom: 5pt;
+}
+.products-thumb a img {
+    height: 280px;
 }
 .block-newsletter .newsletter-content input[type="submit"] {
   -webkit-border-radius: 0 !important;
