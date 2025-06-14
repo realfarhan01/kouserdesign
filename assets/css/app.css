@@ -7711,7 +7711,13 @@ body:not([class~="home"])
   [class~="content-lookbook-bottom"]
   [class~="item-title"]
   a:hover {
-  color: #f55f1e;
+  color: #fff;
+}
+.banner-image img {
+    height: 300px;
+}
+.banner-wrapper.banners {
+    margin-bottom: 35px;
 }
 [class~="block-sliders"]
   [class~="item-content"]
@@ -10716,7 +10722,7 @@ body[class~="home"][class~="title-2"]
   [class~="block-widget-banner"]
   [class~="banner-wrapper-infor"]
   [class~="info"] {
-  background: #fff;
+  background: #f55f1e;
 }
 .block-intro.layout-4 .nav-tabs .nav-item a:before {
   content: "";
