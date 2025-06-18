@@ -11074,7 +11074,7 @@ body[class~="home"][class~="title-3"]
   bottom: 5pt;
 }
 .products-thumb a img {
-    height: 280px;
+    /*height: 280px;*/
 }
 .block-newsletter .newsletter-content input[type="submit"] {
   -webkit-border-radius: 0 !important;
@@ -16845,7 +16845,7 @@ body[class~="home"][class~="title-6"]
   margin-top: 15px;
 }
 .products-list.grid .product-wapper .products-content h3.product-title {
-	font-size: 20px;
+	font-size: 15px;
     text-transform: uppercase;
     font-family: Lato, sans-serif;
     margin-top: 2px;
