@@ -11071,10 +11071,10 @@ body[class~="home"][class~="title-3"]
 [class~="block-product-cats"][class~="layout-2"]
   [class~="item-product-cat-content"]
   [class~="product-cat-content-info"] {
-  bottom: 5pt;
+  bottom: 25pt;
 }
 .products-thumb a img {
-    /*height: 280px;*/
+    height: 280px;
 }
 .block-newsletter .newsletter-content input[type="submit"] {
   -webkit-border-radius: 0 !important;
@@ -12326,6 +12326,7 @@ body[class~="home"][class~="title-6"]
   [class~="product-cat-content-info"]
   [class~="item-title"] {
   background: #fff;
+  padding: 8px;
 }
 [class~="block-banners"][class~="layout-6"]
   [class~="block-widget-banner"]
