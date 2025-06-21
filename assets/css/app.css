@@ -19130,3 +19130,7 @@ body[class~="home"][class~="title-6"]
     border-radius: 5px;
     margin: 15px 0px;
 }
+h3.product-title.mt-2 {
+    margin-top: 10px;
+    margin-bottom: 0px;
+}
