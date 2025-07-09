@@ -1,0 +1,133 @@
+﻿<%@ Page Title="" Language="VB" MasterPageFile="~/Admin/AdminMaster.master" AutoEventWireup="false" CodeFile="Feedback.aspx.vb" Inherits="Admin_Feedback" %>
+
+<asp:Content ID="Content1" ContentPlaceHolderID="head" runat="Server">
+    <style>
+        #s2id_ctl00_C1_DataDisplay_ctl02_DropDownList1
+        {
+            width:100% !important;
+        }
+    </style>
+</asp:Content>
+<asp:Content ID="Content2" ContentPlaceHolderID="C1" runat="Server">
+    <div class="form-horizontal">
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                <h6 class="panel-title">Add Exam Feed Back </h6>
+            </div>
+            <div class="panel-body">
+
+
+                <asp:HiddenField ID="hfId" runat="server" />
+                <asp:Literal ID="litmsg" runat="server"></asp:Literal>
+
+                <div class="form-group">
+                    <label class="col-sm-2 control-label">Exam Name </label>
+                    <div class="col-sm-10">
+                        <asp:DropDownList ID="ddlexam" AppendDataBoundItems="true" class="select-search" runat="server">
+                            <asp:ListItem Value="0">--Select--</asp:ListItem>
+                        </asp:DropDownList>
+                        <asp:RequiredFieldValidator ID="RequiredFieldValidator2" runat="server" InitialValue="0" ControlToValidate="ddlexam"
+                            ErrorMessage="*" ValidationGroup="UserRegistration">*</asp:RequiredFieldValidator>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label class="col-sm-2 control-label">Class</label>
+                    <div class="col-sm-10">
+                        <asp:DropDownList ID="ddlClass" class="select-search" AutoPostBack="true" AppendDataBoundItems="true" runat="server">
+                            <asp:ListItem Value="0">--Select--</asp:ListItem>
+                        </asp:DropDownList>
+
+                        <asp:RequiredFieldValidator ID="RequiredFieldValidator13" runat="server" InitialValue="0" ControlToValidate="ddlClass"
+                            ErrorMessage="*" ValidationGroup="UserRegistration">*</asp:RequiredFieldValidator>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="col-sm-2 control-label">Student</label>
+                    <div class="col-sm-10">
+                        <asp:DropDownList ID="ddlstudent" class="select-search" AppendDataBoundItems="true" runat="server">
+                            <asp:ListItem Value="0">--Select--</asp:ListItem>
+                        </asp:DropDownList>
+
+                        <asp:RequiredFieldValidator ID="RequiredFieldValidator3" runat="server" InitialValue="0" ControlToValidate="ddlstudent"
+                            ErrorMessage="*" ValidationGroup="UserRegistration">*</asp:RequiredFieldValidator>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="col-sm-2 control-label"></label>
+                    <div class="col-sm-10">
+                        <div class="form-actions">
+                            <asp:Button ID="btnsubmit" runat="server" ValidationGroup="UserRegistration" class="btn btn-primary" Text="Submit" />
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+    <div class="panel panel-default">
+
+        <div class="panel-heading">
+            <h6 class="panel-title">Exam Feed Back</h6>
+            <div class="form-actions text-right">
+                <asp:Button ID="btnUpdate" runat="server" ValidationGroup="Remark" CssClass="btn btn-primary" Text="Update" Visible="false"></asp:Button>
+            </div>
+        </div>
+        <div class="table-responsive">
+            <asp:GridView ID="DataDisplay" class="table table-bordered table-check" AutoGenerateColumns="false" runat="server">
+                <Columns>
+                    <asp:TemplateField HeaderText="S.No">
+                        <ItemTemplate>
+                            <%#Container.DataItemIndex + 1%>
+                            <asp:HiddenField ID="hdfSubjectId" Value='<%# Eval("Id")%>' runat="server" />
+                        </ItemTemplate>
+                    </asp:TemplateField>
+                    <asp:BoundField DataField="SubjectName" HeaderText="Subject Name"></asp:BoundField>
+                    <asp:TemplateField HeaderText="Subject Description">
+                        <ItemTemplate>
+                            <asp:DropDownList ID="DropDownList1" class="select" AppendDataBoundItems="true"  Style="width: 100% !important" Visible="false" runat="server">
+                                <asp:ListItem Value="0">----Select Remark----</asp:ListItem>
+    <%--                            <asp:ListItem Value="1" Group="Positive Remarks">Capable of doing much better if he/ she learns to concentrate.</asp:ListItem>
+                                <asp:ListItem Value="2" Group="Positive Remarks">Despite the  late admission he/ she has performed well.</asp:ListItem>
+                                <asp:ListItem Value="3" Group="Positive Remarks">Intelligent and diligent boy/ girl.</asp:ListItem>
+                                <asp:ListItem Value="4" Group="Positive Remarks">Enthusiastic , obedient.</asp:ListItem>
+                                <asp:ListItem Value="5" Group="Positive Remarks">Over all/ All round improvement shown.</asp:ListItem>
+                                <asp:ListItem Value="6" Group="Positive Remarks">Scope for improvement , if greater effort is put in.</asp:ListItem>
+                                <asp:ListItem Value="7" Group="Positive Remarks">Improvement noted but still a long way to go.</asp:ListItem>
+                                <asp:ListItem Value="8" Group="Positive Remarks">Although his / her performance  has been good earlier but lacks concentration now.</asp:ListItem>
+                                <asp:ListItem Value="9" Group="Positive Remarks">Needs guidance in all the subjects.</asp:ListItem>
+                                <asp:ListItem Value="10" Group="Positive Remarks">Good Command over language .</asp:ListItem>
+                                <asp:ListItem Value="11" Group="Positive Remarks">He/ she is Spontaneous and ready to learn.</asp:ListItem>
+                                <asp:ListItem Value="12" Group="Positive Remarks">Has made (some / good / excellent) progress this term.</asp:ListItem>
+                                <asp:ListItem Value="13" Group="Positive Remarks">Remains focused  in class , but (often/occasionally/ rarely)  needs to be attentative.</asp:ListItem>
+                                <asp:ListItem Value="14" Group="Positive Remarks">Shows (continues to demonstrate ) a keen interest in learning.</asp:ListItem>
+                                <asp:ListItem Value="15" Group="Positive Remarks">Has put forth a consistent effort in all areas of his/her work this term.</asp:ListItem>
+                                <asp:ListItem Value="16" Group="Negative Remarks">A serious effort should be made to supervise  day to days work.</asp:ListItem>
+                                <asp:ListItem Value="17" Group="Negative Remarks">Greater care and supervision seems desirable to bring about the required result.</asp:ListItem>
+                                <asp:ListItem Value="18" Group="Negative Remarks">Needs to be more cordial.</asp:ListItem>
+                                <asp:ListItem Value="19" Group="Negative Remarks">A serious  effort is essential  to bring about a better development of personality/performance .</asp:ListItem>
+                                <asp:ListItem Value="20" Group="Negative Remarks">Consistent effort over a longer period needed to come up to the class level.</asp:ListItem>
+                                <asp:ListItem Value="21" Group="Negative Remarks">Improvement in English will be reflected by progress in other subjects also.</asp:ListItem>
+                                <asp:ListItem Value="22" Group="Negative Remarks">Very unsatisfactory work. More  effort and handwork  is needed to bring him/her to the class standard.</asp:ListItem>
+                                <asp:ListItem Value="23" Group="Negative Remarks">Attention and concentration in all the subjects is required.</asp:ListItem>
+                                <asp:ListItem Value="24" Group="Negative Remarks">Very slow in grasping.</asp:ListItem>
+                                <asp:ListItem Value="25" Group="Negative Remarks">Early remedial measures in a systematic way is essential.</asp:ListItem>
+                                <asp:ListItem Value="26" Group="Negative Remarks">An unsettled and rest less child. He/ she should divert his/ her energy towards something creative.</asp:ListItem>
+                                <asp:ListItem Value="27" Group="Negative Remarks">A long term gradual remedial measures are needed  to overcome  deficiencies .</asp:ListItem>
+                                <asp:ListItem Value="28" Group="Negative Remarks">Immediate and effective  remedial measures  should be taken for required results.</asp:ListItem>
+                                <asp:ListItem Value="29" Group="Negative Remarks">Lack of application , a forgetful boy/girl.</asp:ListItem>
+                                <asp:ListItem Value="30" Group="Negative Remarks">He/ She  has to put more efforts toward improvement so far.</asp:ListItem>
+                                <asp:ListItem Value="31" Group="Negative Remarks">Must work hard with interest and purpose .</asp:ListItem>
+                                <asp:ListItem Value="32" Group="Negative Remarks">Should learn to concentrate more.</asp:ListItem>
+                                <asp:ListItem Value="33" Group="Negative Remarks">Serious effort is required / essential  in order to bring a better development of personality.</asp:ListItem>--%>
+                            </asp:DropDownList>
+                           
+                            <asp:TextBox ID="txtSubjectDesc" Visible="false" Style="width: 100%" Text='<%# Eval("SubjectDesc")%>' class="form-control" runat="server" />
+                        </ItemTemplate>
+                    </asp:TemplateField>
+                </Columns>
+            </asp:GridView>
+        </div>
+    </div>
+</asp:Content>
+

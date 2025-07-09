@@ -33,7 +33,7 @@
                            <div class="row justify-content-between">
                               <div class="col-xl-4 col-lg-4 col-md-4 col-sm-6 col-6 header-center">
                                  <div class="site-logo text-left">
-                                    <a href="index.html">
+                                    <a href="/">
                                        <img width="400" height="79" src="media/logo.png" alt="Mojuri – Jewelry Store HTML Template" />
                                     </a>
                                  </div>
@@ -57,7 +57,7 @@
                                  </div>
                                  <div class="col-xl-8 col-lg-4 col-md-12 col-sm-12 col-12 text-center header-center">
                                     <div class="site-logo">
-                                       <a href="index.html">
+                                       <a href="/">
                                           <img width="400" height="80" src="media/logo.png" alt="Mojuri – Jewelry Store HTML Template" />
                                        </a>
                                     </div>
@@ -71,17 +71,17 @@
                            <nav id="main-navigation">
                               <ul id="menu-main-menu" class="menu">
                                  <li class="level-0 menu-item">
-                                    <a href="index.html">
+                                    <a href="/">
                                        <span class="menu-item-text">Home</span>
                                     </a>
                                  </li>
                                  <li class="level-0 menu-item">
-                                    <a href="about-us.html">
+                                    <a href="about-us">
                                        <span class="menu-item-text">About Us</span>
                                     </a>
                                  </li>
                                  <li class="level-0 menu-item menu-item-has-children mega-menu mega-menu-fullwidth align-center">
-                                    <a href="products.html">
+                                    <a href="products">
                                        <span class="menu-item-text">Collection</span>
                                     </a>
                                     <div class="sub-menu">
@@ -91,26 +91,26 @@
                                                 <div class="col-md-6">
                                                    <div class="menu-section">
                                                       <h2 class="sub-menu-title">
-                                                         <a href="products.html">Silver Collection</a>
+                                                         <a href="products">Silver Collection</a>
                                                       </h2>
                                                       <ul class="menu-list">
                                                          <li>
-                                                            <a href="products.html">
+                                                            <a href="products">
                                                                <span class="menu-item-text">Earring</span>
                                                             </a>
                                                          </li>
                                                          <li>
-                                                            <a href="products.html">
+                                                            <a href="products">
                                                                <span class="menu-item-text">Necklace</span>
                                                             </a>
                                                          </li>
                                                          <li>
-                                                            <a href="products.html">
+                                                            <a href="products">
                                                                <span class="menu-item-text">Bangle</span>
                                                             </a>
                                                          </li>
                                                          <li>
-                                                            <a href="products.html">
+                                                            <a href="products">
                                                                <span class="menu-item-text">Ring</span>
                                                             </a>
                                                          </li>
@@ -120,26 +120,26 @@
                                                 <div class="col-md-6">
                                                    <div class="menu-section">
                                                       <h2 class="sub-menu-title">
-                                                         <a href="products.html">Base Metal Collection</a>
+                                                         <a href="products">Base Metal Collection</a>
                                                       </h2>
                                                       <ul class="menu-list">
                                                          <li>
-                                                            <a href="products.html">
+                                                            <a href="products">
                                                                <span class="menu-item-text">Earring</span>
                                                             </a>
                                                          </li>
                                                          <li>
-                                                            <a href="products.html">
+                                                            <a href="products">
                                                                <span class="menu-item-text">Necklace</span>
                                                             </a>
                                                          </li>
                                                          <li>
-                                                            <a href="products.html">
+                                                            <a href="products">
                                                                <span class="menu-item-text">Bangle</span>
                                                             </a>
                                                          </li>
                                                          <li>
-                                                            <a href="products.html">
+                                                            <a href="products">
                                                                <span class="menu-item-text">Ring</span>
                                                             </a>
                                                          </li>
@@ -163,7 +163,7 @@
                                     </div>
                                  </li>
                                  <li class="level-0 menu-item">
-                                    <a href="contact-us.html">
+                                    <a href="contact-us">
                                        <span class="menu-item-text">Contact Us</span>
                                     </a>
                                  </li>
@@ -244,19 +244,19 @@
                                                 <div class="block-content">
                                                    <ul>
                                                       <li>
-                                                         <a href="index.html">Home</a>
+                                                         <a href="/">Home</a>
                                                       </li>
                                                       <li>
-                                                         <a href="about-us.html">About Us</a>
+                                                         <a href="about-us">About Us</a>
                                                       </li>
                                                       <li>
-                                                         <a href="collection.html">Collection</a>
+                                                         <a href="collection">Collection</a>
                                                       </li>
                                                       <li>
-                                                         <a href="ready-stock.html">Ready Stock</a>
+                                                         <a href="#.">Ready Stock</a>
                                                       </li>
                                                       <li>
-                                                         <a href="contact-us.html">Contact Us</a>
+                                                         <a href="contact-us">Contact Us</a>
                                                       </li>
                                                    </ul>
                                                 </div>
@@ -268,19 +268,19 @@
                                                 <div class="block-content">
                                                    <ul>
                                                       <li>
-                                                         <a href="terms-and-conditions.html">Terms and Conditions</a>
+                                                         <a href="terms-and-conditions">Terms and Conditions</a>
                                                       </li>
                                                       <li>
-                                                         <a href="shipping-policy.html">Shipping Policy</a>
+                                                         <a href="shipping-policy">Shipping Policy</a>
                                                       </li>
                                                       <li>
-                                                         <a href="refund-policy.html">Refund Policy</a>
+                                                         <a href="refund-policy">Refund Policy</a>
                                                       </li>
                                                       <li>
-                                                         <a href="cancellation-policy.html">Cancellation Policy</a>
+                                                         <a href="cancellation-policy">Cancellation Policy</a>
                                                       </li>
                                                       <li>
-                                                         <a href="categories-sample.html">Categories (Sample)</a>
+                                                         <a href="categories-sample">Categories (Sample)</a>
                                                       </li>
                                                    </ul>
                                                 </div>
@@ -301,7 +301,7 @@
                               <div class="row">
                                  <div class="col-md-6">
                                     <div class="footer-left">
-                                       <p class="copyright">Copyright © 2025 <a href="index.html">Kouser Design</a>. All Right Reserved </p>
+                                       <p class="copyright">Copyright © 2025 <a href="/">Kouser Design</a>. All Right Reserved </p>
                                     </div>
                                  </div>
                                  <div class="col-md-6">

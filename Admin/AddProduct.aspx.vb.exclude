@@ -1,0 +1,84 @@
+﻿
+Partial Class AddProduct
+    Inherits BasePage
+    Dim BLL As New BusinessLogicLayer
+    Protected Sub Page_Load(ByVal sender As Object, ByVal e As System.EventArgs) Handles Me.Load
+        If Not IsPostBack Then
+            GetProductCategory()
+            If Not Request.QueryString("id") Is Nothing Then
+                hfid.Value = Request.QueryString("id")
+                btnsubmit.Text = "Update >>"
+                FillOld()
+            End If
+        End If
+    End Sub
+    Sub GetProductCategory()
+        'ddlProduct.DataSource = Inv.ExecDataTable("select id,Code + '-' + ShortName Name from tbl_inv_products  where ParentId=0 and isdelete=0 order by ShortName")
+        'ddlProduct.DataValueField = "id"
+        'ddlProduct.DataTextField = "Name"
+        'ddlProduct.DataBind()
+    End Sub
+    Protected Sub Page_PreRender(ByVal sender As Object, ByVal e As System.EventArgs) Handles Me.PreRender
+        Dim sbvaild As String = BLL.DisabledButtonCode("category") & Page.ClientScript.GetPostBackEventReference(btnsubmit, Nothing) & ";"
+        btnsubmit.Attributes.Add("onclick", sbvaild)
+    End Sub
+    Protected Sub btnsubmit_Click(ByVal sender As Object, ByVal e As System.EventArgs) Handles btnsubmit.Click
+        Dim File As String = "", FilePath As String = Server.MapPath(System.Configuration.ConfigurationManager.AppSettings("imagepath"))
+        'If fileuplod.HasFile Then
+        '    If fileuplod.PostedFile.ContentType.Split("/")(0) = "image" Then
+        '        File = Guid.NewGuid().ToString & System.IO.Path.GetExtension(fileuplod.PostedFile.FileName)
+        '        fileuplod.SaveAs(FilePath + File)
+        '    End If
+        'Else
+        '    File = hfimage.Value
+        'End If
+        Dim Result As String = "!"
+        If Not Request.QueryString("id") Is Nothing Then
+            Result = BLL.InsertUpdateProducts(hfid.Value, txtcode.Text, 0, txtshortname.Text, txtfullname.Text, "", txtmrp.Text, txtdp.Text, txtbv.Text, 0, rdactive.SelectedValue, File, editor.Text, txttex.Text)
+            hfid.Value = ""
+            Response.Redirect("productmaster.aspx")
+        Else
+            Result = BLL.InsertUpdateProducts(0, txtcode.Text, 0, txtshortname.Text, txtfullname.Text, "", txtmrp.Text, txtdp.Text, txtbv.Text, 0, rdactive.SelectedValue, File, editor.Text, txttex.Text)
+        End If
+
+        If Result(0) = "#" Then
+            lblmessage.Text = Notifications.SuccessMessage(Result)
+        End If
+        Reset()
+
+    End Sub
+    Sub Reset()
+        btnsubmit.Text = "Save >>"
+        hfid.Value = ""
+        txtcode.Text = ""
+        txtshortname.Text = ""
+        txtfullname.Text = ""
+        rdactive.SelectedValue = 1
+        'txtpack.Text = ""
+        txtmrp.Text = ""
+
+        'txtbv.Text = ""
+        'ddlcategory.ClearSelection()
+
+    End Sub
+    Sub FillOld()
+        Dim dt As DataTable = BLL.ExecDataTable("select * from tbl_inv_products where id=@id", "@id", Request.QueryString("id"))
+        If dt.Rows.Count > 0 Then
+            hfid.Value = dt.Rows(0)("id").ToString
+            txtcode.Text = dt.Rows(0)("code").ToString
+            txtshortname.Text = dt.Rows(0)("shortname").ToString
+            txtfullname.Text = dt.Rows(0)("fullname").ToString
+            rdactive.SelectedValue = dt.Rows(0)("isactive").ToString
+            txttex.Text = dt.Rows(0)("taxvalue").ToString
+            txtmrp.Text = dt.Rows(0)("mrp").ToString
+            txtdp.Text = dt.Rows(0)("dp").ToString
+            editor.Text = dt.Rows(0)("description").ToString
+
+
+            'txtbv.Text = dt.Rows(0)("pv").ToString
+            'ddlcategory.SelectedValue = dt.Rows(0)("categoryid").ToString()
+            'hfimage.Value = dt.Rows(0)("imagename").ToString()
+        End If
+    End Sub
+
+End Class

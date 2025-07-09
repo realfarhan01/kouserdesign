@@ -1,0 +1,139 @@
+﻿
+Partial Class Admin_StudentRegistration
+    Inherits BasePage
+    Dim BLL As New BusinessLogicLayer
+
+
+    Protected Sub Page_Load(ByVal sender As Object, ByVal e As System.EventArgs) Handles Me.Load
+        If Not Page.IsPostBack Then
+            BindLocality()
+            BindState()
+            BindClass()
+            If Not Request.QueryString("Pid") Is Nothing Then
+                Dim dt As DataTable = BLL.GetParentList(Request.QueryString("Pid"), "")
+                If dt.Rows.Count > 0 Then
+                    txtParentId.Text = Request.QueryString("Pid")
+                    txtParentId.Enabled = False
+                    txtFname.Text = dt.Rows(0)("fatherName")
+                    txtMname.Text = dt.Rows(0)("mothername")
+                    txtaddress.Text = dt.Rows(0)("Address")
+                    txtContactno.Text = dt.Rows(0)("Contactno")
+
+                    ddlState.SelectedValue = dt.Rows(0)("State")
+                    BindCity(ddlState.SelectedValue)
+                    ddlCity.SelectedValue = dt.Rows(0)("City")
+                    ddlNationality.SelectedValue = dt.Rows(0)("Nationality")
+                    ddlLocality.SelectedValue = dt.Rows(0)("LocalityId")
+
+                Else
+                    litmsg.Text = Notifications.ErrorMessage("No Data Found")
+                End If
+            End If
+            If Not Request.QueryString("Sid") Is Nothing Then
+                Dim dt1 As DataTable = BLL.GetStudentList(Request.QueryString("Sid"), "", 0, "", 0,"","")
+                If dt1.Rows.Count > 0 Then
+                    txtParentId.Text = Request.QueryString("Sid")
+                    txtParentId.Enabled = False
+                    txtstudent.Text = dt1.Rows(0)("studentname")
+                    txtFname.Text = dt1.Rows(0)("fatherName")
+                    txtMname.Text = dt1.Rows(0)("mothername")
+                    txtaddress.Text = dt1.Rows(0)("Address")
+                    txtContactno.Text = dt1.Rows(0)("Contactno")
+                    ddlGender.SelectedValue = dt1.Rows(0)("gender")
+                    ddlState.SelectedValue = dt1.Rows(0)("State")
+                    BindCity(ddlState.SelectedValue)
+                    ddlCity.SelectedValue = dt1.Rows(0)("City")
+                    ddlNationality.SelectedValue = dt1.Rows(0)("Nationality")
+                    ddlLocality.SelectedValue = dt1.Rows(0)("LocalityId")
+                    ddlClass.SelectedValue = dt1.Rows(0)("classid")
+                    ddlactive.SelectedValue = dt1.Rows(0)("Isblock")
+                    ddlDate.Text = dt1.Rows(0)("dobDD")
+                    ddlMonth.Text = dt1.Rows(0)("dobMM")
+                    ddlYear.Text = dt1.Rows(0)("dobYYYY")
+                    txtEmailid.Text = dt1.Rows(0)("emailid")
+
+                    hfId.Value = Request.QueryString("Sid")
+
+                Else
+                    litmsg.Text = Notifications.ErrorMessage("No Data Found")
+                End If
+            End If
+
+        End If
+    End Sub
+
+    Sub BindLocality()
+        ddlLocality.DataSource = BLL.BindLocality()
+
+        ddlLocality.DataTextField = "Locality"
+        ddlLocality.DataValueField = "LocalityId"
+        ddlLocality.DataBind()
+    End Sub
+    Sub BindState()
+        ddlState.DataSource = BLL.BindState()
+
+        ddlState.DataTextField = "State"
+        ddlState.DataValueField = "State"
+        ddlState.DataBind()
+    End Sub
+    Sub BindCity(ByVal State As String)
+        ddlCity.DataSource = BLL.BindCity(State)
+
+        ddlCity.DataTextField = "City"
+        ddlCity.DataValueField = "City"
+        ddlCity.DataBind()
+    End Sub
+
+    Sub BindClass()
+        ddlClass.DataSource = BLL.BindClass()
+
+        ddlClass.DataTextField = "ClassName"
+        ddlClass.DataValueField = "ClassId"
+        ddlClass.DataBind()
+    End Sub
+    Protected Sub ddlState_SelectedIndexChanged(sender As Object, e As System.EventArgs) Handles ddlState.SelectedIndexChanged
+        BindCity(ddlState.SelectedValue)
+    End Sub
+    Protected Sub btnSubmit_Click(sender As Object, e As System.EventArgs) Handles btnSubmit.Click
+        Dim res As String = ""
+        Dim dob As String = ddlDate.SelectedValue.ToString() & "/" & ddlMonth.SelectedValue.ToString() & "/" & ddlYear.SelectedValue.ToString()
+        If hfId.Value = "" Then
+            res = BLL.AddStudent(hfId.Value, txtParentId.Text, txtstudent.Text, txtFname.Text, txtMname.Text, dob, ddlNationality.SelectedValue, ddlGender.SelectedValue, txtaddress.Text, ddlCity.SelectedValue, ddlState.Text, ddlLocality.SelectedValue, txtContactno.Text, txtEmailid.Text, ddlactive.SelectedValue, ddlClass.SelectedValue)
+            If res.Chars(0) = "#" Then
+                Dim id As String = res.Split(":")(1)
+                'Response.Redirect("StudentRegistration.aspx?Pid=" & id)
+                litmsg.Text = Notifications.SuccessMessage(res)
+
+            End If
+        Else
+            res = BLL.AddStudent(hfId.Value, txtParentId.Text, txtstudent.Text, txtFname.Text, txtMname.Text, dob, ddlNationality.SelectedValue, ddlGender.SelectedValue, txtaddress.Text, ddlCity.SelectedValue, ddlState.Text, ddlLocality.SelectedValue, txtContactno.Text, txtEmailid.Text, ddlactive.SelectedValue, ddlClass.SelectedValue)
+            If res.Chars(0) = "#" Then
+                litmsg.Text = Notifications.SuccessMessage(res)
+                hfId.Value = ""
+            End If
+
+        End If
+
+    End Sub
+
+    Protected Sub txtParentId_TextChanged(ByVal sender As Object, ByVal e As System.EventArgs) Handles txtParentId.TextChanged
+        Dim dt As DataTable = BLL.GetParentList(txtParentId.Text, "")
+        If dt.Rows.Count > 0 Then
+
+            txtParentId.Enabled = False
+            txtFname.Text = dt.Rows(0)("fatherName")
+            txtMname.Text = dt.Rows(0)("mothername")
+            txtaddress.Text = dt.Rows(0)("Address")
+            txtContactno.Text = dt.Rows(0)("Contactno")
+
+            ddlState.SelectedValue = dt.Rows(0)("State")
+            BindCity(ddlState.SelectedValue)
+            ddlCity.SelectedValue = dt.Rows(0)("City")
+            ddlNationality.SelectedValue = dt.Rows(0)("Nationality")
+            ddlLocality.SelectedValue = dt.Rows(0)("LocalityId")
+
+        Else
+            litmsg.Text = Notifications.ErrorMessage("No Data Found")
+        End If
+    End Sub
+End Class

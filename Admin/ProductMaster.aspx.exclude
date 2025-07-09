@@ -1,0 +1,80 @@
+﻿<%@ Page Title="Product Reports" Language="VB" MasterPageFile="~/Admin/AdminMaster.master"
+    AutoEventWireup="false" CodeFile="ProductMaster.aspx.vb" Inherits="ProductMaster" %>
+    
+<asp:Content ID="Content1" ContentPlaceHolderID="head" Runat="Server">
+</asp:Content>
+<asp:Content ID="Content2" ContentPlaceHolderID="C1" Runat="Server">
+          
+                     <div class="row-fluid">
+        <div class="span12">
+            <div class="box box-bordered">
+                <div class="box-title">
+                    <h3>
+                        <i class="icon-th-list"></i> Product  List</h3>
+                </div>
+               <div class="box-content" style="border-bottom:1PX solid black;">
+                        &nbsp;<asp:Literal runat="server" ID="litmsg"></asp:Literal>
+               <ul class="stats">
+                                 <li> 
+                        <asp:DropDownList ID="ddlPage" runat="server" AutoPostBack="True">
+                                                        <asp:ListItem>500</asp:ListItem>
+                                                        <asp:ListItem>1000</asp:ListItem>
+                                                        <asp:ListItem>1500</asp:ListItem>
+                                                        <asp:ListItem>2000</asp:ListItem>
+                                                        <asp:ListItem>2500</asp:ListItem>
+                                                        <asp:ListItem>3000</asp:ListItem>
+                                                        <asp:ListItem>3500</asp:ListItem>
+                                                        <asp:ListItem>4000</asp:ListItem>
+                                                        <asp:ListItem>4500</asp:ListItem>
+                                                        <asp:ListItem>5000</asp:ListItem>
+                                                    </asp:DropDownList></li>
+                                                   <li> <asp:DropDownList ID="ddlExport" runat="server">
+                                                        <asp:ListItem Value="0" Text="--Export--"></asp:ListItem>
+                                                        <asp:ListItem Value="1" Text="Excel"></asp:ListItem>
+                                                        <asp:ListItem Value="2" Text="Pdf"></asp:ListItem>
+                                                        <asp:ListItem Value="3" Text="Word"></asp:ListItem>
+                                                        <asp:ListItem Value="4" Text="Csv"></asp:ListItem>
+                                                    </asp:DropDownList></li>
+                        <li><asp:ImageButton ID="btnExport" runat="server" ImageUrl="~/MLMResources/images/btn_excel.png"
+                                                        AlternateText="Export" /></li></ul></div>
+                        </div>
+              </div></div>
+                    
+
+                    <br />
+                     <asp:GridView ID="DataDisplay" runat="server" CssClass="table table-nomargin" AutoGenerateColumns="false" Width="100%" EmptyDataRowStyle-HorizontalAlign="Center" EmptyDataText="Record Not Fount !">
+                                <Columns>
+                                    <asp:TemplateField HeaderText="S.No.">
+                                        <ItemTemplate>
+                                            <%#Container.DataItemIndex + 1%>
+                                        </ItemTemplate>
+                                    </asp:TemplateField>
+                                    <asp:BoundField DataField="code" HeaderText="Product Code"/>
+                                    <asp:BoundField DataField="shortname" HeaderText="Short Name"/>
+                                    <asp:BoundField DataField="fullname" HeaderText="Full Name"/>
+                                    <asp:BoundField DataField="MRP" HeaderText="MRP"/>
+                                    <asp:BoundField DataField="DP" HeaderText="DP"/>
+                                    <asp:BoundField DataField="PV" HeaderText="BV"/>
+                                    <asp:BoundField DataField="taxvalue" HeaderText="VAT"/>
+                                 
+                                    <asp:BoundField DataField="isactive" HeaderText="Active"/>
+                                    <asp:TemplateField HeaderText="Edit">
+                                        <ItemTemplate>
+                                            <asp:LinkButton ID="lnkedit" runat="server" CommandName="cmdEdit" CommandArgument='<%#Eval("id")%>'>Edit</asp:LinkButton>
+                                        </ItemTemplate>
+                                    </asp:TemplateField>
+                                    <asp:TemplateField HeaderText="Delete">
+                                        <ItemTemplate>
+                                            <asp:LinkButton ID="lnkdelete" runat="server" CommandName="cmdDelete" CommandArgument='<%#Eval("id")%>'>Delete</asp:LinkButton>
+                                        </ItemTemplate>
+                                    </asp:TemplateField>
+                                </Columns>
+                               
+                            </asp:GridView>
+
+                 
+
+
+
+    
+</asp:Content>

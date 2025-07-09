@@ -1,0 +1,246 @@
+﻿<%@ Master Language="VB" CodeFile="AdminMaster.master.vb" Inherits="Admin_AdminMaster" %>
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<%@ Import Namespace="System.Xml" %>
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+<head runat="server">
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>ASPIRE CMS</title>
+
+    <link href="css/bootstrap.min.css" rel="stylesheet" type="text/css" />
+    <link href="css/brain-theme.css" rel="stylesheet" type="text/css" />
+    <link href="css/styles.css" rel="stylesheet" type="text/css" />
+    <link href="css/font-awesome.min.css" rel="stylesheet" type="text/css" />
+    <%--<link href='http://fonts.googleapis.com/css?family=Cuprum' rel='stylesheet' type='text/css'>--%>
+
+    <%--<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.1/jquery.min.js"></script>
+<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.10.2/jquery-ui.min.js"></script>--%>
+    <script src="js/jquery.min.js" type="text/javascript"></script>
+       <%--<script type="text/javascript" src="//code.jquery.com/jquery-1.12.4.js"></script>--%>
+    <script src="js/jquery-ui.min.js" type="text/javascript"></script>
+
+    <script type="text/javascript" src="js/plugins/charts/flot.js"></script>
+    <script type="text/javascript" src="js/plugins/charts/flot.orderbars.js"></script>
+    <script type="text/javascript" src="js/plugins/charts/flot.pie.js"></script>
+    <script type="text/javascript" src="js/plugins/charts/flot.time.js"></script>
+    <script type="text/javascript" src="js/plugins/charts/flot.animator.min.js"></script>
+    <script type="text/javascript" src="js/plugins/charts/excanvas.min.js"></script>
+    <script type="text/javascript" src="js/plugins/charts/flot.resize.min.js"></script>
+
+    <script type="text/javascript" src="js/plugins/forms/uniform.min.js"></script>
+    <script type="text/javascript" src="js/plugins/forms/select2.min.js"></script>
+    <script type="text/javascript" src="js/plugins/forms/inputmask.js"></script>
+    <script type="text/javascript" src="js/plugins/forms/autosize.js"></script>
+    <script type="text/javascript" src="js/plugins/forms/inputlimit.min.js"></script>
+    <script type="text/javascript" src="js/plugins/forms/listbox.js"></script>
+    <script type="text/javascript" src="js/plugins/forms/multiselect.js"></script>
+    <script type="text/javascript" src="js/plugins/forms/validate.min.js"></script>
+    <script type="text/javascript" src="js/plugins/forms/tags.min.js"></script>
+
+    <script type="text/javascript" src="js/plugins/forms/uploader/plupload.full.min.js"></script>
+    <script type="text/javascript" src="js/plugins/forms/uploader/plupload.queue.min.js"></script>
+
+    <script type="text/javascript" src="js/plugins/forms/wysihtml5/wysihtml5.min.js"></script>
+    <script type="text/javascript" src="js/plugins/forms/wysihtml5/toolbar.js"></script>
+
+    <script type="text/javascript" src="js/plugins/interface/jgrowl.min.js"></script>
+    <script type="text/javascript" src="js/plugins/interface/datatables.min.js"></script>
+    <script type="text/javascript" src="js/plugins/interface/prettify.js"></script>
+    <script type="text/javascript" src="js/plugins/interface/fancybox.min.js"></script>
+    <script type="text/javascript" src="js/plugins/interface/colorpicker.js"></script>
+    <script type="text/javascript" src="js/plugins/interface/timepicker.min.js"></script>
+    <script type="text/javascript" src="js/plugins/interface/fullcalendar.min.js"></script>
+    <script type="text/javascript" src="js/plugins/interface/collapsible.min.js"></script>
+    <link href="datepicker/css/datepicker.css" rel="stylesheet" type="text/css" />
+    <script src="datepicker/js/bootstrap-datepicker.js" type="text/javascript"></script>
+    <script type="text/javascript" src="js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="js/application.js"></script>
+    
+    <link rel="stylesheet" href="css/dataTables.bootstrap.css" type="text/css" />
+    <link href="css/CustomDataTable.css" rel="stylesheet" />
+     <link rel="Stylesheet" href="https://cdn.datatables.net/1.10.13/css/jquery.dataTables.min.css" type="text/css" />
+        <link rel="Stylesheet" href="https://cdn.datatables.net/buttons/1.2.4/css/buttons.dataTables.min.css" type="text/css" />
+ 
+    <asp:ContentPlaceHolder ID="head" runat="server">
+    </asp:ContentPlaceHolder>
+</head>
+<body>
+    <form id="form1" runat="server">
+        <asp:ScriptManager ID="ScriptManager1" runat="server">
+        </asp:ScriptManager>
+        <!-- Navbar -->
+        <div class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+            <div class="container-fluid">
+                <div class="navbar-header">
+                    <div class="hidden-lg pull-right">
+                        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar-right">
+                            <span class="sr-only">Toggle navigation</span>
+                            <i class="fa fa-chevron-down"></i>
+                        </button>
+
+                        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".sidebar">
+                            <span class="sr-only">Toggle sidebar</span>
+                            <i class="fa fa-bars"></i>
+                        </button>
+                    </div>
+
+                    <ul class="nav navbar-nav navbar-left-custom">
+                        <li class="user dropdown">
+                            <a class="dropdown-toggle" data-toggle="dropdown">
+                                <img src="../favicon.png" width="25" />
+                                <span><%= Session("User")%></span>
+                                <i class="caret"></i>
+                            </a>
+                            <ul class="dropdown-menu">
+                                <%--  <li><a href="#"><i class="fa fa-user"></i> Profile</a></li>
+                            <li><a href="#"><i class="fa fa-tasks"></i> Tasks</a></li>
+                            <li><a href="#"><i class="fa fa-cog"></i> Settings</a></li>--%>
+                                <li><a href="#"><i class="fa fa-mail-forward"></i>Logout</a></li>
+                            </ul>
+                        </li>
+                        <li><a class="nav-icon sidebar-toggle"><i class="fa fa-bars"></i></a></li>
+                    </ul>
+                </div>
+
+                <ul class="nav navbar-nav navbar-right collapse" id="navbar-right">
+                    <%-- <li>
+                    <a href="#">
+                        <i class="fa fa-rotate-right"></i>
+                        <span>Updates</span>
+                        <strong class="label label-danger">15</strong>
+                    </a>
+                </li>
+
+                <li>
+                    <a href="#">
+                        <i class="fa fa-comments"></i>
+                        <span>Messages</span>
+                        <strong class="label label-danger">7</strong>
+                    </a>
+                </li>--%>
+
+                    <li>
+                        <a href="Logout.aspx">
+                            <i class="fa fa-tasks"></i>
+                            <span>Logout</span>
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+        <!-- /navbar -->
+
+
+        <!-- Switches -->
+        <%-- <div class="color-switch">
+        <a href="http://demo.interface.club/itsbrain/liquid/dark/index.html" title="Switch to dark verion"></a>
+    </div>
+
+    <div class="layout-switch">
+        <a href="http://demo.interface.club/itsbrain/fixed/light/index.html" title="Switch to fixed verion"></a>
+    </div>--%>
+        <!-- /switches -->
+
+
+        <!-- Page header -->
+        <div class="container-fluid">
+            <div class="page-header">
+                <div class="logo">
+                    <a href="home.aspx" title="">
+                        <img src="../images/logo/logo.png" style="width: 180px;" alt=""></a>
+                </div>
+                <ul class="middle-nav">
+                    <li><a href="ProductCategory.aspx" class="btn btn-default"><i class="fa fa-bars"></i><span>Product Categories</span></a></li>
+                    <li><a href="Products.aspx" class="btn btn-default"><i class="fa fa-bars"></i><span>Add/Update Products</span></a></li>
+                </ul>
+            </div>
+        </div>
+        <!-- /page header -->
+
+        <div class="page-container container-fluid">
+
+            <!-- Sidebar -->
+            <div class="sidebar collapse">
+                <asp:Literal runat="server" ID="litmenu"></asp:Literal>
+                <ul class="navigation">
+                    <li class="active"><a href="Home.aspx"><i class="fa fa-align-justify"></i>Dashboard</a></li>
+                    <li><a href="ProductCategory.aspx"><i class="fa fa-align-justify"></i>Product Category</a></li>
+                    <li><a href="Products.aspx"><i class="fa fa-align-justify"></i>Product Master</a></li>
+                </ul>
+            </div>
+            -
+        <!-- /sidebar -->
+
+
+            <div class="page-content">
+                <div class="page-title">
+                    <h5><i class="fa fa-bars"></i>
+                        <asp:Literal ID="litpagename" runat="server"></asp:Literal>
+                        <small>Welcome, <%= Session("User")%></small></h5>
+
+                </div>
+
+
+
+                <asp:ContentPlaceHolder ID="C1" runat="server">
+                </asp:ContentPlaceHolder>
+                <div class="footer">
+                    &copy; Copyright 2017. All rights reserved. Design and Developed by <a href="http://aspiretechnosys.com" title="">Aspire Technosys</a>
+                </div>
+
+            </div>
+        </div>        
+       
+
+ 
+         <%--<script type="text/javascript" src="//code.jquery.com/jquery-1.12.4.js"></script>--%>
+        <script type="text/javascript" src="js/jquery.dataTables.min.js"></script>
+        <script type="text/javascript" src="js/dataTables.bootstrap.js"></script>
+       <%--  <script type="text/javascript" src="https://cdn.datatables.net/buttons/1.2.4/js/dataTables.buttons.min.js"></script>
+ <script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/jszip/2.5.0/jszip.min.js"></script>
+ <script type="text/javascript" src="//cdn.rawgit.com/bpampuch/pdfmake/0.1.24/build/pdfmake.min.js"></script>
+ <script type="text/javascript" src="//cdn.rawgit.com/bpampuch/pdfmake/0.1.24/build/vfs_fonts.js"></script>
+ <script type="text/javascript" src="//cdn.datatables.net/buttons/1.2.4/js/buttons.html5.min.js"></script>
+ <script type="text/javascript" src="//cdn.datatables.net/buttons/1.2.4/js/buttons.colVis.min.js"></script>--%>
+        <script type="text/javascript">
+            $(document).ready(function () {
+                $('#ctl00_C1_DataDisplay').dataTable({
+                    "lengthMenu": [[25, 50, 75, 100, -1], [25, 50, 75, 100, "All"]],
+                    "order": [],
+                    "columnDefs": [{
+                        "targets": 'nosorting',
+                        "orderable": false,
+                    }],
+                    //dom: 'Bfrtip',
+                    //buttons: [
+                    //    {
+                    //        extend: 'copyHtml5',
+                    //        exportOptions: {
+                    //            columns: [0, ':visible']
+                    //        }
+                    //    },
+                    //    {
+                    //        extend: 'excelHtml5',
+                    //        exportOptions: {
+                    //            columns: ':visible'
+                    //        }
+                    //    },
+                    //    {
+                    //        extend: 'pdfHtml5',
+                    //        exportOptions: {
+                    //            columns: [0, 1, 2, 5]
+                    //        }
+                    //    },
+                    //    'colvis'
+                    //]
+                   
+                });
+
+            });
+        </script>
+    </form>
+</body>
+</html>

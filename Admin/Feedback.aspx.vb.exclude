@@ -1,0 +1,228 @@
+﻿
+Partial Class Admin_Feedback
+    Inherits System.Web.UI.Page
+    Dim BLL As New BusinessLogicLayer
+    Protected Sub Page_Load(ByVal sender As Object, ByVal e As System.EventArgs) Handles Me.Load
+        If Not Page.IsPostBack Then
+            bindExam()
+            BindClass()
+
+
+              
+        End If
+    End Sub
+    Protected Sub btnsubmit_Click(ByVal sender As Object, ByVal e As System.EventArgs) Handles btnsubmit.Click
+        Try
+            bind()
+            btnUpdate.Visible = True
+        Catch ex As Exception
+            litmsg.Text = Notifications.ErrorMessage("Sorry For Inconvenience.Please Try Again Later.")
+        End Try
+
+    End Sub
+
+    Protected Sub btnUpdate_Click(ByVal sender As Object, ByVal e As System.EventArgs) Handles btnUpdate.Click
+        Try
+            Dim dt As DataTable = CType(ViewState("dt"), DataTable)
+            Dim txtSubjectDesc As New TextBox
+            Dim hdfSubjectId As New HiddenField
+            Dim DropDownList1 As New DropDownList
+            Dim dr() As DataRow = dt.Select("Sno = '" & 0 & "'")
+            For Each mRow As GridViewRow In DataDisplay.Rows
+                txtSubjectDesc = mRow.FindControl("txtSubjectDesc")
+                hdfSubjectId = mRow.FindControl("hdfSubjectId")
+                DropDownList1 = mRow.FindControl("DropDownList1")
+                If dr(0)("Sno") = 0 Then
+                    Dim res As String = BLL.AddExamFeedBack(ddlexam.SelectedValue, ddlstudent.SelectedValue, hdfSubjectId.Value, ddlClass.SelectedValue, DropDownList1.SelectedItem.Text)
+                Else
+                    Dim res As String = BLL.AddExamFeedBack(ddlexam.SelectedValue, ddlstudent.SelectedValue, hdfSubjectId.Value, ddlClass.SelectedValue, txtSubjectDesc.Text)
+                End If
+                dr(0)("Sno") = 1
+            Next
+            dr(0)("Sno") = 0
+            litmsg.Text = Notifications.SuccessMessage("Updated Sucessfully")
+
+        Catch ex As Exception
+            litmsg.Text = Notifications.ErrorMessage("Sorry For Inconvenience.Please Try Again Later.")
+        End Try
+
+    End Sub
+    Sub bind()
+        Dim dt As DataTable = BLL.Get_ExamFeedBack(ddlexam.SelectedValue, ddlClass.SelectedValue, ddlstudent.SelectedValue)
+        DataDisplay.DataSource = dt
+        DataDisplay.DataBind()
+        Dim DropDownList1 As New DropDownList
+        Dim txtSubjectDesc As New TextBox
+
+        For Each col As System.Data.DataColumn In dt.Columns
+            col.ReadOnly = False
+        Next
+
+        ViewState("dt") = dt
+        Dim dr() As DataRow = dt.Select("Sno = '" & 1 & "'")
+        For Each mRow As GridViewRow In DataDisplay.Rows
+            DropDownList1 = mRow.FindControl("DropDownList1")
+            txtSubjectDesc = mRow.FindControl("txtSubjectDesc")
+            If dr(0)("Sno") = 1 Then
+                DropDownList1.Visible = True
+
+                DropDownList1.DataSource = BLL.ExecDataTable("Select RemarkId,Remark from tbl_Remarks Where Deactivated is Null")
+                DropDownList1.DataTextField = "Remark"
+                DropDownList1.DataValueField = "RemarkId"
+                DropDownList1.DataBind()
+
+                DropDownList1.SelectedItem.Text = dr(0)("SubjectDesc").ToString()
+
+                'Dim item1 As ListItem = New ListItem("Capable of doing much better if he/ she learns to concentrate.", "1")
+                'item1.Attributes("OptionGroup") = "Positive Remarks"
+
+                'Dim item2 As ListItem = New ListItem("Despite the  late admission he/ she has performed well.", "2")
+                'item2.Attributes("OptionGroup") = "Positive Remarks"
+
+                'Dim item3 As ListItem = New ListItem("Intelligent and diligent boy/ girl.", "3")
+                'item3.Attributes("OptionGroup") = "Positive Remarks"
+
+                'Dim item4 As ListItem = New ListItem("Enthusiastic , obedient.", "4")
+                'item4.Attributes("OptionGroup") = "Positive Remarks"
+
+                'Dim item5 As ListItem = New ListItem("Over all/ All round improvement shown.", "5")
+                'item5.Attributes("OptionGroup") = "Positive Remarks"
+                'Dim item6 As ListItem = New ListItem("Scope for improvement , if greater effort is put in.", "6")
+                'item6.Attributes("OptionGroup") = "Positive Remarks"
+                'Dim item7 As ListItem = New ListItem("Improvement noted but still a long way to go.", "7")
+                'item7.Attributes("OptionGroup") = "Positive Remarks"
+                'Dim item8 As ListItem = New ListItem("Although his / her performance  has been good earlier but lacks concentration now.", "8")
+                'item8.Attributes("OptionGroup") = "Positive Remarks"
+
+                'Dim item9 As ListItem = New ListItem("Needs guidance in all the subjects.", "9")
+                'item9.Attributes("OptionGroup") = "Positive Remarks"
+                'Dim item10 As ListItem = New ListItem("Good Command over language .", "10")
+                'item10.Attributes("OptionGroup") = "Positive Remarks"
+                'Dim item11 As ListItem = New ListItem("He/ she is Spontaneous and ready to learn.", "11")
+                'item11.Attributes("OptionGroup") = "Positive Remarks"
+                'Dim item12 As ListItem = New ListItem("Has made (some / good / excellent) progress this term.", "12")
+                'item12.Attributes("OptionGroup") = "Positive Remarks"
+
+                'Dim item13 As ListItem = New ListItem("Remains focused  in class , but (often/occasionally/ rarely)  needs to be attentative.", "13")
+                'item13.Attributes("OptionGroup") = "Positive Remarks"
+                'Dim item14 As ListItem = New ListItem("Shows (continues to demonstrate ) a keen interest in learning.", "14")
+                'item14.Attributes("OptionGroup") = "Positive Remarks"
+                'Dim item15 As ListItem = New ListItem("Has put forth a consistent effort in all areas of his/her work this term.", "15")
+                'item15.Attributes("OptionGroup") = "Positive Remarks"
+
+
+                'Dim item16 As ListItem = New ListItem("A serious effort should be made to supervise  day to days work.", "16")
+                'item16.Attributes("OptionGroup") = "Negative Remarks"
+                'Dim item17 As ListItem = New ListItem("Greater care and supervision seems desirable to bring about the required result.", "17")
+                'item17.Attributes("OptionGroup") = "Negative Remarks"
+                'Dim item18 As ListItem = New ListItem("Needs to be more cordial.", "18")
+                'item18.Attributes("OptionGroup") = "Negative Remarks"
+                'Dim item19 As ListItem = New ListItem("A serious  effort is essential  to bring about a better development of personality/performance .", "19")
+                'item19.Attributes("OptionGroup") = "Negative Remarks"
+                'Dim item20 As ListItem = New ListItem("Consistent effort over a longer period needed to come up to the class level.", "20")
+                'item20.Attributes("OptionGroup") = "Negative Remarks"
+                'Dim item21 As ListItem = New ListItem("Improvement in English will be reflected by progress in other subjects also.", "21")
+                'item21.Attributes("OptionGroup") = "Negative Remarks"
+                'Dim item22 As ListItem = New ListItem("Very unsatisfactory work. More  effort and handwork  is needed to bring him/her to the class standard.", "22")
+                'item22.Attributes("OptionGroup") = "Negative Remarks"
+
+                'Dim item23 As ListItem = New ListItem("Attention and concentration in all the subjects is required.", "23")
+                'item23.Attributes("OptionGroup") = "Negative Remarks"
+
+                'Dim item24 As ListItem = New ListItem("Very slow in grasping.", "24")
+                'item24.Attributes("OptionGroup") = "Negative Remarks"
+
+                'Dim item25 As ListItem = New ListItem("Early remedial measures in a systematic way is essential.", "25")
+                'item25.Attributes("OptionGroup") = "Negative Remarks"
+
+                'Dim item26 As ListItem = New ListItem("An unsettled and rest less child. He/ she should divert his/ her energy towards something creative.", "26")
+                'item26.Attributes("OptionGroup") = "Negative Remarks"
+
+                'Dim item27 As ListItem = New ListItem("A long term gradual remedial measures are needed  to overcome  deficiencies .", "27")
+                'item27.Attributes("OptionGroup") = "Negative Remarks"
+
+                'Dim item28 As ListItem = New ListItem("Immediate and effective  remedial measures  should be taken for required results.", "28")
+                'item28.Attributes("OptionGroup") = "Negative Remarks"
+
+                'Dim item29 As ListItem = New ListItem("Lack of application , a forgetful boy/girl.", "29")
+                'item29.Attributes("OptionGroup") = "Negative Remarks"
+
+                'Dim item30 As ListItem = New ListItem("He/ She  has to put more efforts toward improvement so far.", "30")
+                'item30.Attributes("OptionGroup") = "Negative Remarks"
+
+                'Dim item31 As ListItem = New ListItem("Must work hard with interest and purpose .", "31")
+                'item31.Attributes("OptionGroup") = "Negative Remarks"
+
+                'Dim item32 As ListItem = New ListItem("Should learn to concentrate more.", "32")
+                'item32.Attributes("OptionGroup") = "Negative Remarks"
+
+                'Dim item33 As ListItem = New ListItem("Serious effort is required / essential  in order to bring a better development of personality.", "33")
+                'item33.Attributes("OptionGroup") = "Negative Remarks"
+
+                'DropDownList1.Items.Add(item1)
+                'DropDownList1.Items.Add(item2)
+                'DropDownList1.Items.Add(item3)
+                'DropDownList1.Items.Add(item4)
+                'DropDownList1.Items.Add(item5)
+                'DropDownList1.Items.Add(item6)
+                'DropDownList1.Items.Add(item7)
+                'DropDownList1.Items.Add(item8)
+                'DropDownList1.Items.Add(item9)
+                'DropDownList1.Items.Add(item10)
+                'DropDownList1.Items.Add(item11)
+                'DropDownList1.Items.Add(item12)
+                'DropDownList1.Items.Add(item13)
+                'DropDownList1.Items.Add(item14)
+                'DropDownList1.Items.Add(item15)
+                'DropDownList1.Items.Add(item16)
+                'DropDownList1.Items.Add(item17)
+                'DropDownList1.Items.Add(item18)
+                'DropDownList1.Items.Add(item19)
+                'DropDownList1.Items.Add(item20)
+                'DropDownList1.Items.Add(item21)
+                'DropDownList1.Items.Add(item22)
+                'DropDownList1.Items.Add(item23)
+                'DropDownList1.Items.Add(item24)
+                'DropDownList1.Items.Add(item25)
+                'DropDownList1.Items.Add(item26)
+                'DropDownList1.Items.Add(item27)
+                'DropDownList1.Items.Add(item28)
+                'DropDownList1.Items.Add(item29)
+                'DropDownList1.Items.Add(item30)
+                'DropDownList1.Items.Add(item31)
+                'DropDownList1.Items.Add(item32)
+                'DropDownList1.Items.Add(item33)
+
+            Else
+                txtSubjectDesc.Visible = True
+            End If
+
+            dr(0)("Sno") = 0
+        Next
+    End Sub
+    Protected Sub ddlClass_SelectedIndexChanged(ByVal sender As Object, ByVal e As System.EventArgs) Handles ddlClass.SelectedIndexChanged
+        ddlstudent.Items.Clear()
+        ddlstudent.Items.Insert(0, New ListItem("--Select--", "0"))
+        ddlstudent.DataSource = BLL.ExecDataTable("select * from studentmaster where classid=@classid order by studentname", "@classid", ddlClass.SelectedValue)
+        ddlstudent.DataTextField = "StudentName"
+        ddlstudent.DataValueField = "StudentId"
+        ddlstudent.DataBind()
+
+    End Sub
+    Sub bindExam()
+
+        ddlexam.DataSource = BLL.BindExams
+        ddlexam.DataTextField = "Examname"
+        ddlexam.DataValueField = "Examid"
+        ddlexam.DataBind()
+    End Sub
+    Sub BindClass()
+        ddlClass.DataSource = BLL.BindClass()
+
+        ddlClass.DataTextField = "ClassName"
+        ddlClass.DataValueField = "ClassId"
+        ddlClass.DataBind()
+    End Sub
+    Sub BindRemark()
+    End Sub
+End Class

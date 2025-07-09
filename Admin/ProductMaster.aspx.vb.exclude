@@ -1,0 +1,30 @@
+﻿
+Partial Class ProductMaster
+    Inherits BasePage
+    Dim BLL As New BusinessLogicLayer
+
+    Protected Sub Page_Load(ByVal sender As Object, ByVal e As System.EventArgs) Handles Me.Load
+        If Not IsPostBack Then
+            BuildDataDisplay()
+        End If
+    End Sub
+    Sub BuildDataDisplay()
+        DataDisplay.DataSource = BLL.ExecDataTable("select * from tbl_inv_products where ParentId=0 and isdelete=0 order by id desc")
+        DataDisplay.DataBind()
+    End Sub
+
+    Protected Sub DataDisplay_RowCommand(ByVal sender As Object, ByVal e As System.Web.UI.WebControls.GridViewCommandEventArgs) Handles DataDisplay.RowCommand
+        If e.CommandName = "cmdDelete" Then
+            BLL.ExecNonQuery("update tbl_inv_products set isDelete=1  where id=@id", "@id", e.CommandArgument)
+        End If
+        If e.CommandName = "cmdEdit" Then
+            Response.Redirect("addproduct.aspx?id=" + e.CommandArgument.ToString)
+        End If
+        BuildDataDisplay()
+    End Sub
+
+    Protected Sub DataDisplay_PageIndexChanging(ByVal sender As Object, ByVal e As System.Web.UI.WebControls.GridViewPageEventArgs) Handles DataDisplay.PageIndexChanging
+        DataDisplay.PageIndex = e.NewPageIndex
+        BuildDataDisplay()
+    End Sub
+End Class

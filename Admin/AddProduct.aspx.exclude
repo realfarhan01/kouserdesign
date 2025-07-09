@@ -1,0 +1,170 @@
+﻿<%@ Page Title="Create /Edit Products" Language="VB" MasterPageFile="~/Admin/AdminMaster.master"
+    AutoEventWireup="false" CodeFile="AddProduct.aspx.vb" Inherits="AddProduct" %>
+
+<asp:Content ID="Content1" ContentPlaceHolderID="C1" runat="Server">
+    
+   <div class="row-fluid">
+        <div class="span12">
+            <div class="box box-bordered">
+                <div class="box-title">
+                    <h3>
+                        <i class="icon-th-list"></i>Add/Edit Product</h3>
+                </div>
+                <div class="box-content nopadding">
+                    <div class='form-horizontal form-bordered'>
+                        <div class="control-group">
+        <asp:ValidationSummary runat="server" ID="ValidationSummary1" CssClass="validerror"
+                                                    ValidationGroup="product" />
+                                              <%--  <asp:RequiredFieldValidator ID="RequiredFieldValidator1" runat="server" ErrorMessage="Select Category."
+                                                    ControlToValidate="ddlProduct" Display="None" SetFocusOnError="True" ValidationGroup="product"
+                                                    InitialValue="-1"></asp:RequiredFieldValidator>--%>
+                                                <asp:RequiredFieldValidator ID="RequiredFieldValidator2" runat="server" ErrorMessage="Enter Code."
+                                                    ControlToValidate="txtcode" Display="None" SetFocusOnError="True" ValidationGroup="product"></asp:RequiredFieldValidator>
+                                                <asp:RequiredFieldValidator ID="RequiredFieldValidator3" runat="server" ErrorMessage="Enter Short Name."
+                                                    ControlToValidate="txtshortname" Display="None" SetFocusOnError="True" ValidationGroup="product"></asp:RequiredFieldValidator>
+                                                   <asp:RequiredFieldValidator ID="RequiredFieldValidator4" runat="server" ErrorMessage="Enter Full Name."
+                                                    ControlToValidate="txtfullname" Display="None" SetFocusOnError="True" ValidationGroup="product"></asp:RequiredFieldValidator>
+                                               
+                                                <asp:RequiredFieldValidator ID="RequiredFieldValidator6" runat="server" ErrorMessage="Enter M.R.P. Price."
+                                                    ControlToValidate="txtmrp" Display="None" SetFocusOnError="True" ValidationGroup="product"></asp:RequiredFieldValidator>
+                                                <asp:RequiredFieldValidator ID="RequiredFieldValidator7" runat="server" ErrorMessage="Enter D.P. Price."
+                                                    ControlToValidate="txtdp" Display="None" SetFocusOnError="True" ValidationGroup="product"></asp:RequiredFieldValidator>
+                                               <%-- <asp:RequiredFieldValidator ID="RequiredFieldValidator8" runat="server" ErrorMessage="Enter Distribution Amount"
+                                                    ControlToValidate="txtbv" Display="None" SetFocusOnError="True" ValidationGroup="product"></asp:RequiredFieldValidator>--%>
+                                                  
+                                                
+            <asp:Literal ID="lblmessage" runat="server"></asp:Literal>
+           
+         <%--   <div class="control-group">
+                            <label class="control-label">
+                        Select Product:
+                    </label>
+                        <div class="controls">
+                        
+                    <asp:DropDownList ID="ddlProduct" runat="server" AppendDataBoundItems="True" ValidationGroup="product" CssClass="span6" >
+                                                                <asp:ListItem Value="-1">--Select--</asp:ListItem>
+                                                            </asp:DropDownList>
+                    </div>
+                </div>--%>
+                <%--<div class="control-group">
+                            <label class="control-label">
+                        Product Code:
+                    </label>
+                     <div class="controls">
+                    <asp:TextBox ID="txtPCode" runat="server" MaxLength="20" ValidationGroup="product"
+                                                                CssClass="span6"></asp:TextBox>
+                    </div>
+                </div>--%>
+                 <div class="control-group">
+                            <label class="control-label">
+                       Product Code:
+                    </label>
+                     <div class="controls">
+                    <asp:TextBox ID="txtcode" runat="server" MaxLength="20" ValidationGroup="product"
+                                                                CssClass="span6"></asp:TextBox>
+                    </div>
+                </div>
+              <div class="control-group">
+                            <label class="control-label">
+                        Short Name:
+                    </label>
+                     <div class="controls">
+                    <asp:TextBox ID="txtshortname" runat="server" MaxLength="100" ValidationGroup="product"
+                                                                CssClass="span6"></asp:TextBox>
+                    </div>
+                </div>
+                <div class="control-group">
+                            <label class="control-label">
+                        Full Name:
+                    </label>
+                       <div class="controls">
+                    <asp:TextBox ID="txtfullname" runat="server" MaxLength="200" ValidationGroup="product"
+                                                                CssClass="span6"></asp:TextBox>
+                    </div>
+                </div>
+               <%-- <div class="control-group">
+                            <label class="control-label">
+                       Duration:
+                    </label>
+    <div class="controls">
+                    <asp:TextBox ID="txtpack" runat="server" MaxLength="200" ValidationGroup="product"
+                                                                CssClass="span6"></asp:TextBox>
+                    </div>
+                </div>--%>
+                <div class="control-group">
+                            <label class="control-label">
+                        M.R.P:
+                    </label>
+                <div class="controls">
+                    <asp:TextBox ID="txtmrp" runat="server" MaxLength="9" ValidationGroup="product"
+                                                                CssClass="span6"></asp:TextBox>
+                    </div>
+                </div>
+                <div class="control-group">
+                            <label class="control-label">
+                        D.P:
+                    </label>
+                <div class="controls">
+                    <asp:TextBox ID="txtdp" runat="server" MaxLength="9" ValidationGroup="product"
+                                                                CssClass="span6"></asp:TextBox>(Excluding VAT)
+                    </div>
+                </div>
+                
+               
+               <div class="control-group">
+                            <label class="control-label">
+                      BV (Business Value) 
+                    </label>
+                      <div class="controls">
+                     <asp:TextBox ID="txtbv" runat="server" MaxLength="9" ValidationGroup="product"
+                                                                CssClass="span6"></asp:TextBox>
+                    </div>
+                </div>
+              <div class="control-group">
+                            <label class="control-label">
+                        Tax(Service Tex):
+                    </label>
+                       <div class="controls">
+                     <asp:TextBox ID="txttex" runat="server" MaxLength="9" ValidationGroup="product"
+                                                                CssClass="span6"></asp:TextBox>
+                    </div>
+                </div>
+                <%--<div class="control-group">
+                            <label class="control-label">
+                        Image:
+                    </label>
+                      <div class="controls">
+                        <asp:FileUpload ID="fileuplod" runat="server" CssClass="span6"/>
+                        <asp:HiddenField ID="hfimage" runat="server" />
+                    </div>
+                </div>--%>
+               <div class="control-group">
+                            <label class="control-label">
+                        Description:
+                    </label>
+                <div class="controls">
+                    <asp:TextBox ID="editor" runat="server" TextMode="MultiLine" CssClass="span6"></asp:TextBox>
+                    </div>
+                </div>
+                <div class="control-group">
+                            <label class="control-label">
+                        Status:
+                    </label>
+                     <div class="controls">
+                    <asp:RadioButtonList ID="rdactive" runat="server" RepeatDirection="Horizontal">
+                                                                <asp:ListItem Value="1" Selected="True">Active</asp:ListItem>
+                                                                <asp:ListItem Value="0">De-Active</asp:ListItem>
+                                                            </asp:RadioButtonList>
+                                                            <br />
+                                                            <asp:HiddenField ID="hfid" runat="server" />
+
+                                                                 <div class="form-actions">
+                                                            <asp:Button ID="btnsubmit" runat="server" Text="Save" CssClass="btn btn-danger" ValidationGroup="product" />
+                                                            </div>
+                    </div>
+                </div>
+
+            </div>
+        </div></div></div></div>
+      </div>  
+</asp:Content>

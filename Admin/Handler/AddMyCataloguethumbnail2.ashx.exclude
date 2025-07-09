@@ -1,0 +1,109 @@
+﻿<%@ WebHandler Language="C#" Class="AddMyCataloguethumbnail2" %>
+using System.Collections.Generic;
+using System.Data;
+using System.IO;
+using System.Linq;
+using System.Web;
+using System.Drawing;
+using System.Drawing.Imaging;
+using System.Web.SessionState;
+using Newtonsoft.Json;
+using System;
+
+public class AddMyCataloguethumbnail : IHttpHandler {
+    
+        public void ProcessRequest(HttpContext context)
+        {
+            string fname = "";
+            if (!Directory.Exists(HttpContext.Current.Server.MapPath("~/Files/ActualImage/")))
+            {
+                Directory.CreateDirectory(HttpContext.Current.Server.MapPath("~/Files/ActualImage/"));
+            }
+
+            if (HttpContext.Current.Session["MultiFiles"] == null)
+            {
+                createDataTable();
+            }
+            DataTable dt = (DataTable)HttpContext.Current.Session["MultiFiles"];
+            if (context.Request.Files.Count > 0)
+            {
+
+                HttpFileCollection files = context.Request.Files;
+                for (int i = 0; i < files.Count; i++)
+                {
+                    HttpPostedFile file = files[i];
+                    string Size = (Convert.ToDecimal(file.ContentLength) / (1024 * 1024)).ToString("0.00");
+                    string NewId = Guid.NewGuid().ToString().Substring(1, 22);
+
+                    fname = context.Server.MapPath("~/Files/ActualImage/" + Path.GetFileNameWithoutExtension(NewId) + ".jpg");
+                    file.SaveAs(fname);
+                    ResizeImageAndSave(350, 350, fname, "~/Files/Thumbnail/" + NewId + ".jpg");
+                    //ResizeImageAndSave(300, 424, fname, "~/Files/ThumbnailMobile/" + NewId + ".jpg");
+
+                    int count = dt.Rows.Count + 1;
+
+                    DataRow dtRow = dt.NewRow();
+                    dtRow["SNo"] = count;
+                    dtRow["ImageId"] = "Files/Thumbnail/" + NewId + ".jpg";
+                    dtRow["ImageSize"] = Size;
+                    dtRow["IsDefault"] = 0;
+
+                    dt.Rows.Add(dtRow);
+                    dt.AcceptChanges();
+                    HttpContext.Current.Session["MultiFiles"] = dt;
+                }
+            }
+            string json = JsonConvert.SerializeObject(dt, Formatting.Indented);
+            context.Response.ContentType = "text/plain";
+            context.Response.Write(json);
+        }
+        public string ResizeImageAndSave(int Width, int Height, string imageUrl, string destPath)
+        {
+
+            System.Drawing.Image fullsizeImage = System.Drawing.Image.FromFile(imageUrl);
+            int newWidth = Width;
+            int maxHeight = Height;
+
+            // Prevent using images internal thumbnail
+            fullsizeImage.RotateFlip(RotateFlipType.Rotate180FlipNone);
+            fullsizeImage.RotateFlip(RotateFlipType.Rotate180FlipNone);
+
+            if (fullsizeImage.Width <= newWidth)
+            {
+                newWidth = fullsizeImage.Width;
+            }
+
+            int newHeight = fullsizeImage.Height * newWidth / fullsizeImage.Width;
+            if (newHeight > maxHeight)
+            {
+                // Resize with height instead
+                newWidth = fullsizeImage.Width * maxHeight / fullsizeImage.Height;
+                newHeight = maxHeight;
+            }
+
+            System.Drawing.Image newImage = fullsizeImage.GetThumbnailImage(newWidth, newHeight, null, IntPtr.Zero);
+            newImage.Save(HttpContext.Current.Server.MapPath(destPath), ImageFormat.Jpeg);
+            fullsizeImage.Dispose();
+            return "";
+        }
+        protected void createDataTable()
+        {
+            DataTable dtFiles = new DataTable();
+            if (HttpContext.Current.Session["MultiFiles"] == null)
+            {
+                dtFiles.Columns.Add("SNo", typeof(System.Int32));
+                dtFiles.Columns.Add("ImageId", typeof(System.String));
+                dtFiles.Columns.Add("ImageSize", typeof(System.String));
+                dtFiles.Columns.Add("IsDefault", typeof(System.Int32));
+                HttpContext.Current.Session["MultiFiles"] = dtFiles;
+            }
+        }
+        public bool IsReusable
+        {
+            get
+            {
+                return false;
+            }
+        }
+
+}
