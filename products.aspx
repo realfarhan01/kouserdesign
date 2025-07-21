@@ -21,22 +21,18 @@
                               <div class="col-xl-3 sidebar left-sidebar md-b-50 p-t-10">
                                  <div class="block block-product-cats">
                                     <div class="block-title">
-                                       <h2><a href="products.html">Silver Collection</a></h2>
+                                       <h2><a href="cat-na">All Collection</a></h2>
                                     </div>
                                     <div class="block-content">
                                        <div class="product-cats-list">
-                                                                  <ul>
-                            <%
-                                Dim searchstring As String = ""
+                         <ul>
+                            <%  Dim searchstring As String = ""
                                 If Request.QueryString("cat") IsNot Nothing Then
                                     searchstring = Request.QueryString("cat").ToString().ToLower()
                                 End If
                                 If Len(searchstring) = 0 Then
                                     searchstring = "na"
-                                End If
-
-                                 %>
-                            <li><a href='cat-na'><span>All Categories</span></a></li>
+                                End If  %>
                                 <% Dim dtCategories As DataTable = HttpContext.Current.Session("Categories")
 
                                     If dtCategories IsNot Nothing Then
@@ -110,7 +106,7 @@
                                                                  <h3 class="product-title">
                                                                     <a href="<%# Eval("CatCode")%>"><%# Eval("CatalogueTitle")%></a>
                                                                  </h3>
-                                                                 <span class="price"><%# Eval("Price")%></span>
+                                                                 <span class="price">INR :- <%# Eval("Price")%></span>
                                                               </div>
                                                            </div>
                                                         </div>

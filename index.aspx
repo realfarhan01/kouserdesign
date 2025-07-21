@@ -50,12 +50,12 @@
                                        <div class="item item-product-cat">
                                           <div class="item-product-cat-content">
                                              <div class="item-image animation-horizontal">
-                                                <a href="#.">
+                                                <a href="cat-f09921944378c114c2">
                                                    <img width="330" height="330" src="media/6.jpg" alt="Earrings">
                                                 </a>
                                              </div>
                                              <div class="product-cat-content-info">
-                                                <a class="item-title" href="#.">Silver Collection</a>
+                                                <a class="item-title" href="cat-f09921944378c114c2">Silver Collection</a>
                                              </div>
                                           </div>
                                        </div>
@@ -64,12 +64,12 @@
                                        <div class="item item-product-cat">
                                           <div class="item-product-cat-content">
                                              <div class="item-image animation-horizontal">
-                                                <a href="#.">
+                                                <a href="cat-86bfd0aecd6b40e9f5">
                                                    <img width="330" height="330" src="media/7.jpg" alt="Necklaces">
                                                 </a>
                                              </div>
                                              <div class="product-cat-content-info">
-                                                <a class="item-title" href="#.">Base Metal Collection</a>
+                                                <a class="item-title" href="cat-86bfd0aecd6b40e9f5">Base Metal Collection</a>
                                              </div>
                                           </div>
                                        </div>
@@ -88,90 +88,31 @@
                                  </div>
                                  <div class="block-content">
                                     <div class="row">
-                                       <div class="col-md-3 sm-m-b-40">
-                                          <div class="block-widget-banner">
-                                             <div class="bg-banner">
-                                                <div class="banner-wrapper banners">
-                                                   <div class="banner-image">
-                                                      <a href="shop-grid-left.html">
-                                                         <img src="media/1.jpg" alt="img">
-                                                      </a>
-                                                   </div>
-                                                   <div class="banner-wrapper-infor">
-                                                      <div class="info">
-                                                         <div class="content">
-                                                            <h3 class="title-banner">EAR STACK MAGIC</h3>
-                                                            <a class="button" href="#">View Details</a>
-                                                         </div>
-                                                      </div>
-                                                   </div>
-                                                </div>
-                                             </div>
-                                          </div>
-                                       </div>
-                                       <div class="col-md-3 sm-m-b-40">
-                                          <div class="block-widget-banner">
-                                             <div class="bg-banner">
-                                                <div class="banner-wrapper banners">
-                                                   <div class="banner-image">
-                                                      <a href="shop-grid-left.html">
-                                                         <img src="media/2.jpg" alt="img">
-                                                      </a>
-                                                   </div>
-                                                   <div class="banner-wrapper-infor">
-                                                      <div class="info">
-                                                         <div class="content">
-                                                            <h3 class="title-banner">EAR STACK MAGIC</h3>
-                                                            <a class="button" href="#">View Details</a>
-                                                         </div>
-                                                      </div>
-                                                   </div>
-                                                </div>
-                                             </div>
-                                          </div>
-                                       </div>
-                                       <div class="col-md-3 sm-m-b-40">
-                                          <div class="block-widget-banner">
-                                             <div class="bg-banner">
-                                                <div class="banner-wrapper banners">
-                                                   <div class="banner-image">
-                                                      <a href="shop-grid-left.html">
-                                                         <img src="media/3.jpg" alt="img">
-                                                      </a>
-                                                   </div>
-                                                   <div class="banner-wrapper-infor">
-                                                      <div class="info">
-                                                         <div class="content">
-                                                            <h3 class="title-banner">EAR STACK MAGIC</h3>
-                                                            <a class="button" href="#">View Details</a>
-                                                         </div>
-                                                      </div>
-                                                   </div>
-                                                </div>
-                                             </div>
-                                          </div>
-                                       </div>
-                                       <div class="col-md-3 sm-m-b-40">
-                                          <div class="block-widget-banner">
-                                             <div class="bg-banner">
-                                                <div class="banner-wrapper banners">
-                                                   <div class="banner-image">
-                                                      <a href="shop-grid-left.html">
-                                                         <img src="media/4.jpg" alt="img">
-                                                      </a>
-                                                   </div>
-                                                   <div class="banner-wrapper-infor">
-                                                      <div class="info">
-                                                         <div class="content">
-                                                            <h3 class="title-banner">EAR STACK MAGIC</h3>
-                                                            <a class="button" href="#">View Details</a>
-                                                         </div>
-                                                      </div>
-                                                   </div>
-                                                </div>
-                                             </div>
-                                          </div>
-                                       </div>
+                                       <asp:Repeater ID="dtlMostPopulerProducts" runat="server">
+                                            <ItemTemplate>
+                                                <div class="col-md-3 sm-m-b-40">
+                                                  <div class="block-widget-banner">
+                                                     <div class="bg-banner">
+                                                        <div class="banner-wrapper banners">
+                                                           <div class="banner-image">
+                                                              <a href="<%# Eval("CatCode")%>">
+                                                                 <img src="<%# Eval("ThumbnailURL")%>" alt="img">
+                                                              </a>
+                                                           </div>
+                                                           <div class="banner-wrapper-infor">
+                                                              <div class="info">
+                                                                 <div class="content">
+                                                                    <a href="<%# Eval("CatCode")%>"><h3 class="title-banner"><%# Eval("CatalogueTitle")%></h3></a>
+                                                                    <a class="button" href="<%# Eval("CatCode")%>">View Details</a>
+                                                                 </div>
+                                                              </div>
+                                                           </div>
+                                                        </div>
+                                                     </div>
+                                                  </div>
+                                               </div>                                            
+                                            </ItemTemplate>
+                                        </asp:Repeater>
                                     </div>
                                  </div>
                               </div>
@@ -193,13 +134,13 @@
                                                       <span class="number-lookbook">1</span>
                                                       <div class="content-lookbook" style="left:35px; bottom:10px;">
                                                          <div class="item-thumb">
-                                                            <a href="#.">
+                                                            <a href="cat-b19d8ad15cc4d19a92">
                                                                <img width="1000" height="1000" src="media/product/1.jpg" alt="">
                                                             </a>
                                                          </div>
                                                          <div class="content-lookbook-bottom">
                                                             <div class="item-title">
-                                                               <a href="#.">Silver Earring</a>
+                                                               <a href="cat-b19d8ad15cc4d19a92">Silver Earring</a>
                                                             </div>
                                                          </div>
                                                       </div>
@@ -213,7 +154,7 @@
                                              <div class="lookbook-intro">
                                                 <h2 class="title">Silver Earring</h2>
                                                 <div class="description">925 sterling silver earring studded with semi precious stone in shiny gold finish</div>
-                                                <a href="#." class="button button-primary animation-horizontal">SHOP NOW</a>
+                                                <a href="cat-b19d8ad15cc4d19a92" class="button button-primary animation-horizontal">SHOP NOW</a>
                                              </div>
                                           </div>
                                        </div>
@@ -226,7 +167,7 @@
                                              <div class="lookbook-intro">
                                                 <h2 class="title">Silver Necklace</h2>
                                                 <div class="description">925 sterling silver necklace studded with semi precious stone in shiny gold finish</div>
-                                                <a href="#." class="button button-primary animation-horizontal">SHOP NOW</a>
+                                                <a href="cat-f6b24596038cf8740a" class="button button-primary animation-horizontal">SHOP NOW</a>
                                              </div>
                                           </div>
                                        </div>
@@ -239,13 +180,13 @@
                                                       <span class="number-lookbook">1</span>
                                                       <div class="content-lookbook" style="right:35px; bottom:10px;">
                                                          <div class="item-thumb">
-                                                            <a href="#.">
+                                                            <a href="cat-f6b24596038cf8740a">
                                                                <img width="1000" height="1000" src="media/product/2.jpg" alt="">
                                                             </a>
                                                          </div>
                                                          <div class="content-lookbook-bottom">
                                                             <div class="item-title">
-                                                               <a href="#.">Silver Necklace</a>
+                                                               <a href="cat-f6b24596038cf8740a">Silver Necklace</a>
                                                             </div>
                                                          </div>
                                                       </div>
@@ -267,13 +208,13 @@
                                                       <span class="number-lookbook">1</span>
                                                       <div class="content-lookbook" style="left:35px; bottom:10px;">
                                                          <div class="item-thumb">
-                                                            <a href="#.">
+                                                            <a href="cat-7db49cb6343105127a">
                                                                <img width="1000" height="1000" src="media/product/3.jpg" alt="">
                                                             </a>
                                                          </div>
                                                          <div class="content-lookbook-bottom">
                                                             <div class="item-title">
-                                                               <a href="#.">Silver Ring</a>
+                                                               <a href="cat-7db49cb6343105127a">Silver Ring</a>
                                                             </div>
                                                          </div>
                                                       </div>
@@ -287,7 +228,7 @@
                                              <div class="lookbook-intro">
                                                 <h2 class="title">Silver Ring</h2>
                                                 <div class="description">925 sterling silver ring studded with semi precious stone in shiny gold finish</div>
-                                                <a href="#." class="button button-primary animation-horizontal">SHOP NOW</a>
+                                                <a href="cat-7db49cb6343105127a" class="button button-primary animation-horizontal">SHOP NOW</a>
                                              </div>
                                           </div>
                                        </div>
@@ -300,7 +241,7 @@
                                              <div class="lookbook-intro">
                                                 <h2 class="title">Silver Bracelet</h2>
                                                 <div class="description">925 sterling silver bracelet studded with semi precious stone in shiny gold finish</div>
-                                                <a href="#." class="button button-primary animation-horizontal">SHOP NOW</a>
+                                                <a href="cat-e2b6dff4a898463e6a" class="button button-primary animation-horizontal">SHOP NOW</a>
                                              </div>
                                           </div>
                                        </div>
@@ -313,13 +254,13 @@
                                                       <span class="number-lookbook">1</span>
                                                       <div class="content-lookbook" style="right:35px; bottom:10px;">
                                                          <div class="item-thumb">
-                                                            <a href="#.">
+                                                            <a href="cat-e2b6dff4a898463e6a">
                                                                <img width="1000" height="1000" src="media/product/4.jpg" alt="">
                                                             </a>
                                                          </div>
                                                          <div class="content-lookbook-bottom">
                                                             <div class="item-title">
-                                                               <a href="#.">Silver Bracelet</a>
+                                                               <a href="cat-e2b6dff4a898463e6a">Silver Bracelet</a>
                                                             </div>
                                                          </div>
                                                       </div>
@@ -344,106 +285,30 @@
                                  <div class="block-content">
                                     <div class="content-product-list slick-wrap">
                                        <div class="slick-sliders products-list grid" data-slidestoscroll="true" data-dots="false" data-nav="1" data-columns4="1" data-columns3="2" data-columns2="2" data-columns1="3" data-columns1440="4" data-columns="4">
-                                          <div class="item-product slick-slide">
-                                             <div class="items">
-                                                <div class="products-entry clearfix product-wapper">
-                                                   <div class="products-thumb">
-                                                      <div>
-                                                         <a href="#.">
-                                                            <img src="media/1.jpg" class="hover-image back" alt="">
-                                                         </a>
-                                                      </div>
-                                                   </div>
-                                                   <div class="products-content">
-                                                      <div class="contents">
-                                                         <h3 class="product-title">
-                                                            <a href="#.">Earring</a>
-                                                         </h3>
-                                                      </div>
-                                                   </div>
+                                          <asp:Repeater ID="dtlNewListedProducts" runat="server">
+                                            <ItemTemplate>
+                                                <div class="item-product slick-slide">
+                                                    <div class="items">
+                                                        <div class="products-entry clearfix product-wapper index-page">
+                                                            <div class="products-thumb">
+                                                                <div>
+                                                                    <a href="<%# Eval("CatCode")%>">
+                                                                    <img src="<%# Eval("ThumbnailURL")%>" class="hover-image back" alt="">
+                                                                    </a>
+                                                                </div>
+                                                            </div>
+                                                            <div class="products-content">
+                                                                <div class="contents">
+                                                                    <h3 class="product-title">
+                                                                    <a href="<%# Eval("CatCode")%>"><%# Eval("CategoryName")%></a>
+                                                                    </h3>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
                                                 </div>
-                                             </div>
-                                          </div>
-                                          <div class="item-product slick-slide">
-                                             <div class="items">
-                                                <div class="products-entry clearfix product-wapper">
-                                                   <div class="products-thumb">
-                                                      <div>
-                                                         <a href="#.">
-                                                            <img src="media/2.jpg" class="hover-image back" alt="">
-                                                         </a>
-                                                      </div>
-                                                   </div>
-                                                   <div class="products-content">
-                                                      <div class="contents">
-                                                         <h3 class="product-title">
-                                                            <a href="#.">Necklace</a>
-                                                         </h3>
-                                                      </div>
-                                                   </div>
-                                                </div>
-                                             </div>
-                                          </div>
-                                          <div class="item-product slick-slide">
-                                             <div class="items">
-                                                <div class="products-entry clearfix product-wapper">
-                                                   <div class="products-thumb">
-                                                      <div>
-                                                         <a href="#.">
-                                                            <img src="media/3.jpg" class="hover-image back" alt="">
-                                                         </a>
-                                                      </div>
-                                                   </div>
-                                                   <div class="products-content">
-                                                      <div class="contents">
-                                                         <h3 class="product-title">
-                                                            <a href="#.">Bangle</a>
-                                                         </h3>
-                                                      </div>
-                                                   </div>
-                                                </div>
-                                             </div>
-                                          </div>
-                                          <div class="item-product slick-slide">
-                                             <div class="items">
-                                                <div class="products-entry clearfix product-wapper">
-                                                   <div class="products-thumb">
-                                                      <div>
-                                                         <a href="#.">
-                                                            <img src="media/4.jpg" class="hover-image back" alt="">
-                                                         </a>
-                                                      </div>
-                                                   </div>
-                                                   <div class="products-content">
-                                                      <div class="contents">
-                                                         <h3 class="product-title">
-                                                            <a href="#.">Ring</a>
-                                                         </h3>
-                                                      </div>
-                                                   </div>
-                                                </div>
-                                             </div>
-                                          </div>
-                                          <div class="item-product slick-slide">
-                                             <div class="items">
-                                                <div class="products-entry clearfix product-wapper">
-                                                   <div class="products-thumb">
-                                                      <div>
-                                                         <a href="#.">
-                                                            <img src="media/5.jpg" class="hover-image back" alt="">
-                                                         </a>
-                                                      </div>
-                                                   </div>
-                                                   <div class="products-content">
-                                                      <div class="contents">
-                                                         <h3 class="product-title">
-                                                            <a href="#.">Ring</a>
-                                                         </h3>
-                                                      </div>
-                                                   </div>
-                                                </div>
-                                             </div>
-                                          </div>
+                                            </ItemTemplate>
+                                        </asp:Repeater>
                                        </div>
                                     </div>
                                  </div>

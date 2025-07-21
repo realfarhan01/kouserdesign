@@ -5,7 +5,19 @@
       <meta charset="UTF-8">
       <meta http-equiv="X-UA-Compatible" content="IE=edge">
       <meta name="viewport" content="width=device-width, initial-scale=1">
-      <title>Kouser Design</title>
+      <title>Kouser Design – Handcrafted 925 Silver Jewellery | Munich, Germany</title>
+      <meta name="description" content="Discover timeless 925 silver jewellery by Kouser Design, a Munich-based family business with 30 years of craftsmanship. Shop elegant, handcrafted pieces blending tradition & modern style.">
+      <meta property="og:title" content="Kouser Design – Premium Handcrafted Silver Jewellery | Since 1994">
+      <meta property="og:description" content="Family-run Munich jewellers crafting timeless 925 silver pieces for 30 years. Explore our heritage-inspired collections online.">
+      <meta property="og:type" content="website">
+      <meta property="og:url" content="https://www.kouser-design.com">
+      <meta property="og:image" content="https://www.kouser-design.com/images/og-preview.jpg">
+      <meta property="og:site_name" content="Kouser Design">
+      <meta property="og:locale" content="en_US">
+      <meta name="twitter:card" content="summary_large_image">
+      <meta name="twitter:title" content="Kouser Design – Handcrafted 925 Silver Jewellery | Munich">
+      <meta name="twitter:description" content="Family-crafted silver jewellery since 1994. Now available online.">
+      <meta name="twitter:image" content="https://www.kouser-design.com/images/twitter-preview.jpg">
       <link rel="shortcut icon" type="image/x-icon" href="media/favicon.png">
       <link rel="stylesheet" href="libs/bootstrap/css/bootstrap.min.css" type="text/css">
       <link rel="stylesheet" href="libs/feather-font/css/iconfont.css" type="text/css">
@@ -91,26 +103,26 @@
                                                 <div class="col-md-6">
                                                    <div class="menu-section">
                                                       <h2 class="sub-menu-title">
-                                                         <a href="products">Silver Collection</a>
+                                                         <a href="cat-f09921944378c114c2">Silver Collection</a>
                                                       </h2>
                                                       <ul class="menu-list">
                                                          <li>
-                                                            <a href="products">
+                                                            <a href="cat-b19d8ad15cc4d19a92">
                                                                <span class="menu-item-text">Earring</span>
                                                             </a>
                                                          </li>
                                                          <li>
-                                                            <a href="products">
+                                                            <a href="cat-f6b24596038cf8740a">
                                                                <span class="menu-item-text">Necklace</span>
                                                             </a>
                                                          </li>
                                                          <li>
-                                                            <a href="products">
+                                                            <a href="cat-e2b6dff4a898463e6a">
                                                                <span class="menu-item-text">Bangle</span>
                                                             </a>
                                                          </li>
                                                          <li>
-                                                            <a href="products">
+                                                            <a href="cat-7db49cb6343105127a">
                                                                <span class="menu-item-text">Ring</span>
                                                             </a>
                                                          </li>
@@ -120,26 +132,26 @@
                                                 <div class="col-md-6">
                                                    <div class="menu-section">
                                                       <h2 class="sub-menu-title">
-                                                         <a href="products">Base Metal Collection</a>
+                                                         <a href="cat-86bfd0aecd6b40e9f5">Base Metal Collection</a>
                                                       </h2>
                                                       <ul class="menu-list">
                                                          <li>
-                                                            <a href="products">
+                                                            <a href="cat-7aad1df9260f561cdb">
                                                                <span class="menu-item-text">Earring</span>
                                                             </a>
                                                          </li>
                                                          <li>
-                                                            <a href="products">
+                                                            <a href="cat-ab96298eae85765209">
                                                                <span class="menu-item-text">Necklace</span>
                                                             </a>
                                                          </li>
                                                          <li>
-                                                            <a href="products">
+                                                            <a href="cat-6796abdbb3561f6419">
                                                                <span class="menu-item-text">Bangle</span>
                                                             </a>
                                                          </li>
                                                          <li>
-                                                            <a href="products">
+                                                            <a href="cat-eda1e48a6c41bbbabd">
                                                                <span class="menu-item-text">Ring</span>
                                                             </a>
                                                          </li>
