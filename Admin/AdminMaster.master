@@ -8,7 +8,7 @@
     <meta charset="utf-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>ASPIRE CMS</title>
+    <title>Kouser Design – Handcrafted 925 Silver Jewellery | Munich, Germany</title>
 
     <link href="css/bootstrap.min.css" rel="stylesheet" type="text/css" />
     <link href="css/brain-theme.css" rel="stylesheet" type="text/css" />
@@ -188,7 +188,7 @@
                 <asp:ContentPlaceHolder ID="C1" runat="server">
                 </asp:ContentPlaceHolder>
                 <div class="footer">
-                    &copy; Copyright 2017. All rights reserved. Design and Developed by <a href="http://aspiretechnosys.com" title="">Aspire Technosys</a>
+                    &copy; Copyright 2025. All rights reserved. Design and Developed by <a href="http://aspiretechnosys.com" title="">Aspire Technosys</a>
                 </div>
 
             </div>

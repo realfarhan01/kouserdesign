@@ -7,7 +7,7 @@
 <head id="Head1" runat="server">
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<title>ASPIRE CMS</title>
+<title>Kouser Design – Handcrafted 925 Silver Jewellery | Munich, Germany</title>
 <link rel="stylesheet" href="login/css/style.default.css" type="text/css" />
 <script type="text/javascript" src="login/js/jquery-1.9.1.min.js"></script>
 <script type="text/javascript" src="login/js/jquery-migrate-1.1.1.min.js"></script>
@@ -48,7 +48,7 @@
     <div class="loginshadow animate3 fadeInUp"></div>
 </div><!--loginwrapper-->
                         <div align="center">
-                        <p>Copyright &copy; 2021.</p><p> Design & Developed by <a href="http://aspiretechnosys.com/" target="_blank" >Aspire Technosys Pvt Ltd</a></p>	</div>	        	
+                        <p>Copyright &copy; 2025.</p><p> Design & Developed by <a href="http://aspiretechnosys.com/" target="_blank" >Aspire Technosys Pvt Ltd</a></p>	</div>	        	
 			   
            
        <script type="text/javascript">

@@ -10,14 +10,14 @@
       <meta property="og:title" content="Kouser Design – Premium Handcrafted Silver Jewellery | Since 1994">
       <meta property="og:description" content="Family-run Munich jewellers crafting timeless 925 silver pieces for 30 years. Explore our heritage-inspired collections online.">
       <meta property="og:type" content="website">
-      <meta property="og:url" content="https://www.kouser-design.com">
-      <meta property="og:image" content="https://www.kouser-design.com/images/og-preview.jpg">
+      <meta property="og:url" content="https://kouserdesign.com">
+      <meta property="og:image" content="https://kouserdesign.com/media/favicon.png">
       <meta property="og:site_name" content="Kouser Design">
       <meta property="og:locale" content="en_US">
       <meta name="twitter:card" content="summary_large_image">
       <meta name="twitter:title" content="Kouser Design – Handcrafted 925 Silver Jewellery | Munich">
       <meta name="twitter:description" content="Family-crafted silver jewellery since 1994. Now available online.">
-      <meta name="twitter:image" content="https://www.kouser-design.com/images/twitter-preview.jpg">
+      <meta name="twitter:image" content="https://kouserdesign.com/media/favicon.png">
       <link rel="shortcut icon" type="image/x-icon" href="media/favicon.png">
       <link rel="stylesheet" href="libs/bootstrap/css/bootstrap.min.css" type="text/css">
       <link rel="stylesheet" href="libs/feather-font/css/iconfont.css" type="text/css">
@@ -262,10 +262,10 @@
                                                          <a href="about-us">About Us</a>
                                                       </li>
                                                       <li>
-                                                         <a href="collection">Collection</a>
+                                                         <a href="products">Collection</a>
                                                       </li>
                                                       <li>
-                                                         <a href="#.">Ready Stock</a>
+                                                         <a href="products">Ready Stock</a>
                                                       </li>
                                                       <li>
                                                          <a href="contact-us">Contact Us</a>
