@@ -19159,3 +19159,71 @@ ul.navinner li a span {
     font-size: 13px;
     font-weight: 500;
 }
+.goog-te-banner-frame.skiptranslate {
+    display: none !important;
+}
+
+.goog-logo-link, .goog-te-gadget span {
+    display: none !important;
+}
+
+.VIpgJd-ZVi9od-ORHb-OEVmcd {
+    display: none !important;
+}
+
+.lang-select {
+    position: relative;
+    display: inline-block;
+    border-radius: 6px;
+    overflow: hidden;
+}
+
+.lang-select img {
+    position: absolute;
+    left: 8px;
+    top: 50%;
+    transform: translateY(-50%);
+    pointer-events: none;
+}
+.lang-select select {
+    padding: 0px 40px;
+    border: none;
+    font-size: 14px;
+    outline: none;
+    background: transparent;
+    appearance: none;
+    cursor: pointer;
+    color:#fff;
+}
+.lang-select::after {
+    content: "";
+    position: absolute;
+    right: 10px;
+    top: 50%;
+    transform: translateY(-50%);
+    font-size: 10px;
+    color: #666;
+    pointer-events: none;
+
+}
+select#custom_translate option {
+    text-align: start;
+    color:#000;
+}
+@media (max-width: 767px) {
+    .lang-select {
+        margin: 20px 0 0 0px;
+    }
+
+    .main-header__logo img {
+        width: 215px;
+    }
+
+    .sec-title__title {
+        font-size: 25px;
+    }
+
+    .sec-title__tagline {
+        font-size: 19px;
+    }
+}

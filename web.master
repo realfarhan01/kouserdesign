@@ -31,12 +31,14 @@
       <link rel="stylesheet" href="assets/css/app.css" type="text/css">
       <link rel="stylesheet" href="assets/css/responsive.css" type="text/css">
       <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500;1,600;1,700&amp;display=swap" rel="stylesheet">
-      <link href="https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&amp;display=swap" rel="stylesheet">
+      <link href="https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&amp;display=swap" rel="stylesheet">       
+      <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+Devanagari&display=swap" rel="stylesheet">
       <asp:ContentPlaceHolder id="head" runat="server"></asp:ContentPlaceHolder>
    </head>
    <body class="home home-3 title-3">
       <form id="form1" runat="server">
          <div>
+            <div id="google_translate_element" style="display:none;"></div>
             <div id="page" class="hfeed page-wrapper">
                <header id="site-header" class="site-header header-v3">
                   <div class="header-mobile">
@@ -178,6 +180,15 @@
                                     <a href="contact-us">
                                        <span class="menu-item-text">Contact Us</span>
                                     </a>
+                                 </li>
+                                 <li class="level-0 menu-item">
+                                    <div class="lang-select">
+                                       <img id="lang_flag" src="https://flagcdn.com/24x18/gb.png" alt="flag">
+                                       <select id="custom_translate">
+                                          <option value="en" data-flag="gb">English</option>
+                                          <option value="de" data-flag="de">German</option>
+                                       </select>
+                                    </div>
                                  </li>
                               </ul>
                            </nav>
@@ -346,6 +357,40 @@
          <script src="libs/slick/js/slick.min.js"></script>
          <script src="libs/mmenu/js/jquery.mmenu.all.min.js"></script>
          <script src="assets/js/app.js"></script>
+         <script src="https://translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
+          <script>
+                 function googleTranslateElementInit() {
+                new google.translate.TranslateElement({
+                   pageLanguage: 'en',
+                   autoDisplay: false
+                }, 'google_translate_element');
+             }
+             document.addEventListener("DOMContentLoaded", function() {
+                var flagImg = document.getElementById("lang_flag");
+                var customSelect = document.getElementById("custom_translate");
+                // Change language & update flag
+                customSelect.addEventListener("change", function() {
+                   var lang = this.value;
+                   var flagCode = this.options[this.selectedIndex].getAttribute("data-flag");
+                   if (flagCode) {
+                      flagImg.src = "https://flagcdn.com/24x18/" + flagCode + ".png";
+                   }
+                   if (lang) {
+                      var selectField = document.querySelector("select.goog-te-combo");
+                      if (selectField) {
+                         selectField.value = lang;
+                         selectField.dispatchEvent(new Event("change"));
+                      }
+                   }
+                });
+                // Remove Google top bar if it appears
+                setInterval(function() {
+                   var iframe = document.querySelector(".goog-te-banner-frame");
+                   if (iframe) iframe.style.display = "none";
+                   document.body.style.top = "0px";
+                }, 500);
+             });
+          </script>
       </form>
    </body>
 </html>
